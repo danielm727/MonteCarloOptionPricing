@@ -14,14 +14,16 @@ double MonteCarlo::price(const Option& option, const BlackScholes& model)
 	double totalPayoff{};
 	double T{ option.getExpiry() };
 
-	for (int i{}; i < m_numPaths; ++i)
+	for (int i{}; i < m_numPaths / 2; ++i)
 	{
-		double ST{ model.generateTerminalPrice(T, gen, dist) };
+		double Z{ dist(gen) };
+		double ST1{ model.generateTerminalPriceWithZ(T, Z) };
+		double ST2{ model.generateTerminalPriceWithZ(T, -Z) };
 
-		totalPayoff += option.payoff(ST);
+		totalPayoff += 0.5*(option.payoff(ST1)+option.payoff(ST2));
 	}
 
-	double avgPayoff{ totalPayoff / m_numPaths };
+	double avgPayoff{ totalPayoff / (m_numPaths / 2) };
 	return std::exp(-model.getRate() * T) * avgPayoff;
 }
 

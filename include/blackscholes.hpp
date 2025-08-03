@@ -6,6 +6,7 @@ class BlackScholes
 public:
 	BlackScholes(double S0, double r, double sigma);
 	double generateTerminalPrice(double T, std::mt19937& gen, std::normal_distribution<>& dist) const;
+	double generateTerminalPriceWithZ(double T, double Z) const;
 	double getRate() const;
 
 private:

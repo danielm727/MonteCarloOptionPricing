@@ -10,7 +10,7 @@ int main()
 	double r{ 0.05 };
 	double sigma{ 0.2 };
 	double T{ 1.0 };
-	int numPaths{ 100000 };
+	int numPaths{ 1000000 };
 
 	Option callOption(K, T, OptionType::Call);
 	BlackScholes model(S0, r, sigma);
