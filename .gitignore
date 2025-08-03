@@ -1,0 +1,16 @@
+# Ignore all build and output directories
+build/
+out/
+*.f8cd74ef/
+x64/
+
+# Visual Studio files
+*.sln
+*.vcxproj*
+*.vcxproj.user
+*.VC.db
+*.opensdf
+*.sdf
+*.ipch/
+*.user/
+.vs/
